@@ -1,0 +1,91 @@
+/* General Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header Styling */
+header {
+    background: linear-gradient(to right, #0062E6, #33AEFF);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.header-content {
+    max-width: 960px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* Main Content Styling */
+main {
+    max-width: 960px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Section Styling */
+section {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Group Styling */
+.form-group {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="number"], input[type="radio"], label {
+    margin-right: 10px;
+}
+
+.radio-group {
+    display: flex;
+    align-items: center;
+}
+
+/* Button Styling */
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content, main {
+        padding: 0 10px;
+    }
+
+    .radio-group {
+        flex-direction: column;
+    }
+}

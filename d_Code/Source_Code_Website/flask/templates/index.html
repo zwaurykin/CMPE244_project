@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOBILE APP CONTROLLED STEPPER MOTOR with JETSON NANO</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>MOBILE APP CONTROLLED STEPPER MOTOR with JETSON NANO</h1>
+            <p>Prabhat Kumar - 016659617</p>
+            <p>Sindhuja Ravi - 015742688</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="motor-controls">
+            <h2>MOTOR CONTROLS</h2>
+            <div class="form-group">
+                <label>Angle:</label>
+                <input type="number" id="angle">
+            </div>
+            <div class="form-group">
+                <label>Direction:</label>
+                <div class="radio-group">
+                    <input type="radio" name="direction" value="cw" id="cw" checked>
+                    <label for="cw">Clockwise</label>
+                    <input type="radio" name="direction" value="ccw" id="ccw">
+                    <label for="ccw">Counterclockwise</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Frequency:</label>
+                <input type="number" id="frequency">
+            </div>
+            <div class="form-group">
+                <label>Duty Cycle:</label>
+                <input type="number" id="dutyCycle">
+            </div>
+            <button onclick="sendMotorCommand()">RUN MOTOR</button>
+        </section>
+
+        <section class="sensor-readings">
+            <h2>SENSOR READINGS</h2>
+            <p>Magnetometer (mx, my, mz): <span id="magnetometer">Waiting for data...</span></p>
+            <p>Accelerometer (accx, accy, accz): <span id="accelerometer">Waiting for data...</span></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2023 CMPE_244 Project Team</p>
+    </footer>
+
+    <script>
+        function sendMotorCommand() {
+            const angle = document.getElementById('angle').value;
+            const frequency = document.getElementById('frequency').value;
+            const dutyCycle = document.getElementById('dutyCycle').value;
+            const direction = document.querySelector('input[name="direction"]:checked').value;
+
+            fetch('/run-motor', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ angle, direction, frequency, dutyCycle }),
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log("Motor command sent.");
+                    fetchSensorData(); // fetch sensor data here
+                } else {
+                    console.error("Failed to send motor command.");
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function fetchSensorData() {
+            fetch('/get-sensor-data')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('magnetometer').textContent = `${data.mag_x}, ${data.mag_y}, ${data.mag_z}`;
+                    document.getElementById('accelerometer').textContent = `${data.acc_x}, ${data.acc_y}, ${data.acc_z}`;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <TextView
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:text="Sent:"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="Angle"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/black"
+            android:inputType="number"
+            android:id="@+id/angle"
+            android:text=""
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="Rotation"
+            android:textColor="@color/black" />
+
+        <RadioGroup
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:id="@+id/rotationRadioGroup"
+            android:checkedButton="@id/rotationClockwise">
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/black"
+                android:id="@+id/rotationClockwise"
+                android:text="Clockwise" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/black"
+                android:textColor="@color/black"
+                android:id="@+id/rotationAntiClockwise"
+                android:text="Counterclockwise" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="Frequency"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:backgroundTint="@color/black"
+            android:inputType="number"
+            android:id="@+id/frequency"
+            android:textColor="@color/black" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="Duty Cycle"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/dutyCycle"
+            android:backgroundTint="@color/black"
+            android:textColor="@color/black" />
+    </LinearLayout>
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_gravity="center"
+        android:text="SEND"
+        android:id="@+id/sendBtn"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="35dp">
+
+    </Button>
+
+    <TextView
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="15dp"
+        android:textSize="20dp"
+        android:text="Received:"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="Magnetometer"
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="mx"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:id="@+id/magneMx"
+                    android:backgroundTint="@color/black"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:backgroundTint="@color/black"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="my"
+                    android:backgroundTint="@color/black"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:id="@+id/magneMy"
+                    android:backgroundTint="@color/black"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="mz"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:id="@+id/magneMz"
+                    android:backgroundTint="@color/black"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="Accelerometer"
+            android:textColor="@color/black" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="mx"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:id="@+id/accelMx"
+                    android:backgroundTint="@color/black"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="my"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:id="@+id/accelMy"
+                    android:backgroundTint="@color/black"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="mz"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:id="@+id/accelMz"
+                    android:backgroundTint="@color/black"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

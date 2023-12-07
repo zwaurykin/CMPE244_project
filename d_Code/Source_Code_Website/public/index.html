@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMPE_244 EMBEDDED SOFTWARE - SEMESTER LONG PROJECT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>CMPE_244 - SEMESTER LONG PROJECT</h1>
+        <p>Prabhat Kumar - 016659617</p>
+        <p>Sindhuja Ravi - 015742688</p>
+    </header>
+
+    <main>
+        <div class="motor-controls">
+            <h3>MOTOR CONTROLS</h3>
+            <label>Angle: <input type="number" id="angle"></label><br>
+            <label>Direction: 
+                <input type="radio" name="direction" value="cw" checked> Clockwise
+                <input type="radio" name="direction" value="ccw"> Counterclockwise
+            </label><br>
+            <label>Frequency: <input type="number" id="frequency"></label><br>
+            <label>Duty Cycle: <input type="number" id="dutyCycle"></label><br>
+            <button onclick="sendMotorCommand()">RUN MOTOR</button>
+        </div>
+
+        <div class="sensor-readings">
+            <h3>SENSOR READINGS</h3>
+            <p>Magnetometer (mx, my, mz): <span id="magnetometer">Waiting for data...</span></p>
+            <p>Accelerometer (accx, accy, accz): <span id="accelerometer">Waiting for data...</span></p>
+        </div>
+    </main>
+
+    <script>
+        function sendMotorCommand() {
+            const angle = document.getElementById('angle').value;
+            const frequency = document.getElementById('frequency').value;
+            const dutyCycle = document.getElementById('dutyCycle').value;
+            const direction = document.querySelector('input[name="direction"]:checked').value;
+
+            fetch('/run-motor', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ angle, direction, frequency, dutyCycle }),
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log("Motor command sent.");
+                    // Optionally, fetch sensor data here
+                } else {
+                    console.error("Failed to send motor command.");
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function fetchSensorData() {
+            fetch('/get-sensor-data')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('magnetometer').textContent = `${data.mag_x}, ${data.mag_y}, ${data.mag_z}`;
+                    document.getElementById('accelerometer').textContent = `${data.acc_x}, ${data.acc_y}, ${data.acc_z}`;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>

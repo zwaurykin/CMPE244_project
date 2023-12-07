@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.graph-container {
+    width: 70%;
+}
+
+.graph {
+    padding: 20px;
+    border: 1px solid #ccc;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.chart {
+    height: 400px;
+    display: flex;
+    align-items: flex-end;
+    padding: 10px 0;
+}
+
+.bar {
+    flex-grow: 1;
+    background-color: #3498db;
+    margin: 0 5px;
+    transition: height 0.3s ease;
+}
+
+.bar:hover {
+    opacity: 0.8;
+}
+
+.chart-labels {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
